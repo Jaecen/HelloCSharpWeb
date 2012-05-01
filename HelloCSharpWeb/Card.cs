@@ -5,11 +5,11 @@ namespace HelloCSharpWeb
 	[DataContract]
 	public class Card
 	{
-		[DataMember]
+		[DataMember(Name="name")]
 		public string Name 
 		{ get; protected set; }
 
-		[DataMember]
+		[DataMember(Name = "color")]
 		public string Color 
 		{ get; protected set; }
 
