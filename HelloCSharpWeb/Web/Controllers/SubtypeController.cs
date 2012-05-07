@@ -7,7 +7,7 @@ namespace HelloCSharpWeb.Web.Controllers
 {
 	public class SubtypeController : ApiController
 	{
-		public IEnumerable<Card> Get(string subtype)
+		public IEnumerable<dynamic> Get(string subtype)
 		{
 			var innistradBlockSets = new[]
 			{
@@ -23,7 +23,7 @@ namespace HelloCSharpWeb.Web.Controllers
 				.SelectMany(setName => hunter.GetCardsForSet(setName))
 				.Where(c => c.compactType != null)
 				.Where(c => ((string)c.compactType).ToLower().Contains((subtype ?? String.Empty).ToLower()))
-				.Select(c => new Card((string)c.checklistName, (string)c.checklistColor));
+				.Select(c => new { name = c.checklistName, color = c.checklistColor });
 		}
 	}
 }
